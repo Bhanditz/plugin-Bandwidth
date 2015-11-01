@@ -58,7 +58,7 @@ install:
   - cd ./tests/travis ; git checkout master ; cd ../..
 
   - export GENERATE_TRAVIS_YML_COMMAND="php ./tests/travis/generator/main.php generate:travis-yml --plugin=\"Bandwidth\" --verbose"
-  - '[[ "$TRAVIS_JOB_NUMBER" != *.1 || "$TRAVIS_PULL_REQUEST" != "false" ]] || ./tests/travis/autoupdate_travis_yml.sh'
+  #- '[[ "$TRAVIS_JOB_NUMBER" != *.1 || "$TRAVIS_PULL_REQUEST" != "false" ]] || ./tests/travis/autoupdate_travis_yml.sh'
 
   - ./tests/travis/checkout_test_against_branch.sh
 
@@ -121,6 +121,7 @@ before_script:
 after_script:
   # change directory back to root travis dir
   - cd $PIWIK_ROOT_DIR
+  - cat ./tests/UI/config.js
 
   # output contents of files w/ debugging info to screen
   - cat /var/log/nginx/error.log
